@@ -1,0 +1,299 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import escuelas from '../../data/escuelas.json';
+
+export function getStaticPaths() {
+  return escuelas.map(escuela => ({
+    params: { id: escuela.id },
+    props: { escuela }
+  }));
+}
+
+const { escuela } = Astro.props;
+
+const iconMap: Record<string, string> = {
+  cante: '🎤',
+  baile: '💃',
+  guitarra: '🎸',
+  percusion: '🥁'
+};
+---
+
+<Layout title={`${escuela.nombre} - Escuelas de Flamenco`} description={escuela.descripcion}>
+  <Navigation />
+  
+  <section class="detail-header">
+    <div class="container">
+      <a href="/escuelas" class="back-link">← Volver a Escuelas</a>
+      <div class="header-content">
+        <div class="header-icon">{iconMap[escuela.tipo] || '🎓'}</div>
+        <div>
+          <span class="badge badge-secondary">{escuela.tipo}</span>
+          <h1 class="detail-title">{escuela.nombre}</h1>
+          <p class="detail-subtitle">{escuela.provincia}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="detail-grid">
+        <div class="detail-main">
+          <div class="detail-card">
+            <h2 class="section-heading">Sobre la Escuela</h2>
+            <p class="detail-description">{escuela.descripcion}</p>
+          </div>
+          
+          <div class="detail-card">
+            <h2 class="section-heading">Información de Contacto</h2>
+            <div class="contact-info">
+              <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <div>
+                  <strong>Dirección</strong>
+                  <p>{escuela.direccion}</p>
+                </div>
+              </div>
+              
+              {escuela.telefono && (
+                <div class="contact-item">
+                  <span class="contact-icon">📞</span>
+                  <div>
+                    <strong>Teléfono</strong>
+                    <p><a href={`tel:${escuela.telefono}`}>{escuela.telefono}</a></p>
+                  </div>
+                </div>
+              )}
+              
+              {escuela.email && (
+                <div class="contact-item">
+                  <span class="contact-icon">✉️</span>
+                  <div>
+                    <strong>Email</strong>
+                    <p><a href={`mailto:${escuela.email}`}>{escuela.email}</a></p>
+                  </div>
+                </div>
+              )}
+              
+              {escuela.web && (
+                <div class="contact-item">
+                  <span class="contact-icon">🌐</span>
+                  <div>
+                    <strong>Sitio Web</strong>
+                    <p><a href={escuela.web} target="_blank" rel="noopener noreferrer">{escuela.web}</a></p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h3>Especialidad</h3>
+            <p class="highlight-text">{escuela.tipo.charAt(0).toUpperCase() + escuela.tipo.slice(1)}</p>
+          </div>
+          
+          <div class="sidebar-card">
+            <h3>Provincia</h3>
+            <p class="highlight-text">{escuela.provincia}</p>
+          </div>
+          
+          <div class="sidebar-card">
+            <h3>Aprende Flamenco</h3>
+            <p class="sidebar-text">
+              Las escuelas de flamenco ofrecen formación para todos los niveles, desde principiantes 
+              hasta profesionales. Contacta directamente para información sobre horarios y matrículas.
+            </p>
+          </div>
+          
+          <div class="sidebar-card cta-card">
+            <h3>¿Estudias aquí?</h3>
+            <p class="sidebar-text">
+              Comparte tu experiencia y ayuda a otros estudiantes a encontrar la mejor formación en flamenco.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .detail-header {
+    background: var(--gradient-secondary);
+    padding: var(--spacing-xl) 0 var(--spacing-3xl);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-bg-medium);
+    text-decoration: none;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 600;
+    transition: color var(--transition-fast);
+  }
+  
+  .back-link:hover {
+    color: var(--color-bg-dark);
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+  
+  .header-content .badge {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .header-icon {
+    font-size: 5rem;
+    background: rgba(10, 10, 10, 0.2);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+  }
+  
+  .detail-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-bg-dark);
+  }
+  
+  .detail-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-bg-dark);
+    font-weight: 600;
+    opacity: 0.8;
+  }
+  
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .detail-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  .detail-card {
+    background: var(--color-bg-medium);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .section-heading {
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.75rem;
+  }
+  
+  .detail-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  .contact-item {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+  
+  .contact-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  
+  .contact-item strong {
+    display: block;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .contact-item p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    word-break: break-word;
+  }
+  
+  .contact-item a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .contact-item a:hover {
+    color: var(--color-secondary-dark);
+    text-decoration: underline;
+  }
+  
+  .detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  .sidebar-card {
+    background: var(--color-bg-medium);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .sidebar-card h3 {
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+  }
+  
+  .highlight-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+  }
+  
+  .sidebar-text {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  
+  .cta-card {
+    background: var(--gradient-primary);
+  }
+  
+  .cta-card h3,
+  .cta-card .sidebar-text {
+    color: var(--color-text-primary);
+  }
+  
+  @media (max-width: 968px) {
+    .detail-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

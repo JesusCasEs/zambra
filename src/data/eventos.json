@@ -1,0 +1,134 @@
+[
+  {
+    "id": "evento-1",
+    "titulo": "Festival Flamenco de Jerez",
+    "fecha": "2025-02-28",
+    "hora": "20:00",
+    "lugar": "Teatro Villamarta",
+    "provincia": "Cádiz",
+    "descripcion": "El festival más importante de flamenco a nivel internacional. Una cita imprescindible para los amantes del arte jondo con artistas de primer nivel.",
+    "tipo": "festival",
+    "imagen": "/images/eventos/jerez.jpg"
+  },
+  {
+    "id": "evento-2",
+    "titulo": "Recital de Cante Jondo",
+    "fecha": "2025-03-15",
+    "hora": "21:00",
+    "lugar": "Peña Flamenca Torreón del Cante",
+    "provincia": "Sevilla",
+    "descripcion": "Velada flamenca con cantaores locales y artistas invitados. Entrada libre hasta completar aforo.",
+    "tipo": "concierto",
+    "imagen": "/images/eventos/recital.jpg"
+  },
+  {
+    "id": "evento-3",
+    "titulo": "Taller de Guitarra Flamenca",
+    "fecha": "2025-03-20",
+    "hora": "18:00",
+    "lugar": "Tertulia Flamenca De Úbeda",
+    "provincia": "Jaén",
+    "descripcion": "Taller intensivo de técnicas de guitarra flamenca impartido por maestros de la guitarra. Plazas limitadas, inscripción previa.",
+    "tipo": "taller",
+    "imagen": "/images/eventos/guitarra.jpg"
+  },
+  {
+    "id": "evento-4",
+    "titulo": "Bienal de Flamenco de Sevilla",
+    "fecha": "2025-09-10",
+    "hora": "19:00",
+    "lugar": "Diversos espacios de Sevilla",
+    "provincia": "Sevilla",
+    "descripcion": "La Bienal de Flamenco es el evento más importante del flamenco mundial. Programación variada con los mejores artistas del panorama actual.",
+    "tipo": "festival",
+    "imagen": "/images/eventos/bienal.jpg"
+  },
+  {
+    "id": "evento-5",
+    "titulo": "Zambra en el Sacromonte",
+    "fecha": "2025-04-05",
+    "hora": "22:00",
+    "lugar": "Cuevas del Sacromonte",
+    "provincia": "Granada",
+    "descripcion": "Espectáculo tradicional de zambra mora en las cuevas del Sacromonte. Una experiencia única del flamenco granadino.",
+    "tipo": "espectaculo",
+    "imagen": "/images/eventos/zambra.jpg"
+  },
+  {
+    "id": "evento-6",
+    "titulo": "Concurso Nacional de Arte Flamenco",
+    "fecha": "2025-06-15",
+    "hora": "20:00",
+    "lugar": "Teatro Cervantes",
+    "provincia": "Málaga",
+    "descripcion": "Concurso de cante, baile y guitarra flamenca. Categorías profesional y amateur. Premios en metálico y trofeos.",
+    "tipo": "concurso",
+    "imagen": "/images/eventos/concurso.jpg"
+  },
+  {
+    "id": "evento-7",
+    "titulo": "Noche Flamenca en Córdoba",
+    "fecha": "2025-05-12",
+    "hora": "21:30",
+    "lugar": "Patio de los Naranjos",
+    "provincia": "Córdoba",
+    "descripcion": "Velada flamenca bajo las estrellas en el emblemático Patio de los Naranjos. Ambiente íntimo y familiar.",
+    "tipo": "concierto",
+    "imagen": "/images/eventos/cordoba.jpg"
+  },
+  {
+    "id": "evento-8",
+    "titulo": "Curso de Baile Flamenco",
+    "fecha": "2025-04-10",
+    "hora": "17:00",
+    "lugar": "Centro Cultural de Huelva",
+    "provincia": "Huelva",
+    "descripcion": "Curso de iniciación al baile flamenco. Aprende los pasos básicos de sevillanas, alegrías y bulerías. Todos los niveles.",
+    "tipo": "taller",
+    "imagen": "/images/eventos/baile.jpg"
+  },
+  {
+    "id": "evento-9",
+    "titulo": "Festival de Cante de las Minas",
+    "fecha": "2025-08-02",
+    "hora": "22:00",
+    "lugar": "Auditorio Parque Minero",
+    "provincia": "Almería",
+    "descripcion": "Festival internacional de cante flamenco. El evento más prestigioso para descubrir nuevos talentos del cante jondo.",
+    "tipo": "festival",
+    "imagen": "/images/eventos/minas.jpg"
+  },
+  {
+    "id": "evento-10",
+    "titulo": "Homenaje a Camarón",
+    "fecha": "2025-07-16",
+    "hora": "21:00",
+    "lugar": "Plaza de la Merced",
+    "provincia": "Cádiz",
+    "descripcion": "Concierto homenaje a Camarón de la Isla con los mejores cantaores actuales interpretando sus temas más emblemáticos.",
+    "tipo": "concierto",
+    "imagen": "/images/eventos/camaron.jpg"
+  },
+  {
+    "id": "evento-11",
+    "titulo": "Jornadas de Flamenco y Patrimonio",
+    "fecha": "2025-11-20",
+    "hora": "10:00",
+    "lugar": "Universidad de Granada",
+    "provincia": "Granada",
+    "descripcion": "Jornadas académicas sobre el flamenco como patrimonio cultural inmaterial. Conferencias, mesas redondas y actuaciones.",
+    "tipo": "conferencia",
+    "imagen": "/images/eventos/jornadas.jpg"
+  },
+  {
+    "id": "evento-12",
+    "titulo": "Fiesta Flamenca Navideña",
+    "fecha": "2025-12-20",
+    "hora": "19:00",
+    "lugar": "Teatro Lope de Vega",
+    "provincia": "Sevilla",
+    "descripcion": "Especial navideño con villancicos flamencos y actuaciones de artistas consagrados. Ambiente festivo y familiar.",
+    "tipo": "espectaculo",
+    "imagen": "/images/eventos/navidad.jpg"
+  }
+]

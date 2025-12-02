@@ -1,0 +1,114 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">Zambra</h3>
+        <p class="footer-description">
+          Agenda cultural de flamenco en Andalucía. Descubre peñas, eventos, escuelas y asociaciones dedicadas al arte jondo.
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/eventos">Eventos</a></li>
+          <li><a href="/penas">Peñas</a></li>
+          <li><a href="/escuelas">Escuelas</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Contacto</h4>
+        <p class="footer-text">Instituto Andaluz del Flamenco</p>
+        <p class="footer-text">Calle Santa Teresa 8, 41004 Sevilla</p>
+        <p class="footer-text">institutoandaluz.flamenco@juntadeandalucia.es</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Zambra. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: rgba(230, 245, 240, 0.95);
+    border-top: 1px solid var(--color-primary);
+    margin-top: var(--spacing-3xl);
+    padding: var(--spacing-3xl) 0 var(--spacing-lg);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-section {
+    color: #000000;
+  }
+
+  .footer-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-subtitle {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-description,
+  .footer-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xs);
+    color: #000000;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .footer-links a {
+    color: #000000;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-primary);
+    color: #000000;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>

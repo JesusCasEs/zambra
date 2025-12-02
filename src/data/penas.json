@@ -1,0 +1,122 @@
+[
+  {
+    "id": "pena-flamenca-ubeda",
+    "nombre": "Tertulia Flamenca De Úbeda",
+    "provincia": "Jaén",
+    "direccion": "Calle Real, 23400 Úbeda",
+    "telefono": "953 75 08 97",
+    "email": "tertuliaflamencoubeda@gmail.com",
+    "descripcion": "Peña flamenca tradicional en el corazón de Úbeda, dedicada a la preservación y difusión del arte flamenco. Organiza recitales mensuales y talleres de cante, baile y guitarra.",
+    "imagen": "/images/penas/ubeda.jpg"
+  },
+  {
+    "id": "pena-flamenca-sevilla-torre",
+    "nombre": "Peña Flamenca Torreón Del Cante",
+    "provincia": "Sevilla",
+    "direccion": "Calle Castilla, 151, 41010 Sevilla",
+    "telefono": "954 34 56 78",
+    "email": "torreondelcante@gmail.com",
+    "descripcion": "Una de las peñas más emblemáticas de Sevilla, conocida por sus veladas flamencas los viernes y sábados. Cuenta con una amplia programación de artistas consagrados y jóvenes promesas.",
+    "imagen": "/images/penas/torreon.jpg"
+  },
+  {
+    "id": "tertulia-flamenca-navas",
+    "nombre": "Tertulia Flamenca Navas De San Juan",
+    "provincia": "Jaén",
+    "direccion": "Plaza de España, 23350 Navas de San Juan",
+    "telefono": "953 36 70 12",
+    "email": "tertulianavassanjuan@hotmail.com",
+    "descripcion": "Tertulia flamenca con más de 30 años de historia, especializada en el fomento del cante jondo y la guitarra flamenca en la comarca.",
+    "imagen": "/images/penas/navas.jpg"
+  },
+  {
+    "id": "pena-flamenca-cadiz-alborea",
+    "nombre": "Tertulia Flamenca La Alboreá",
+    "provincia": "Cádiz",
+    "direccion": "Calle Ancha, 11001 Cádiz",
+    "telefono": "956 22 13 45",
+    "email": "laalborea@gmail.com",
+    "descripcion": "Peña gaditana dedicada al flamenco puro, con especial atención a los palos tradicionales de Cádiz como las alegrías y bulerías. Organiza el Festival de la Alboreá cada primavera.",
+    "imagen": "/images/penas/alborea.jpg"
+  },
+  {
+    "id": "pena-flamenca-granada-colonias",
+    "nombre": "Tertulia Flamenca Las Colonias",
+    "provincia": "Granada",
+    "direccion": "Camino del Sacromonte, 18010 Granada",
+    "telefono": "958 22 45 67",
+    "email": "lascolonias@flamenco.es",
+    "descripcion": "Situada en el mítico barrio del Sacromonte, esta peña es referente del flamenco granadino. Ofrece zambras y espectáculos en cuevas tradicionales.",
+    "imagen": "/images/penas/colonias.jpg"
+  },
+  {
+    "id": "pena-flamenca-cordoba-badia",
+    "nombre": "Tertulia Flamenca Juan Badía",
+    "provincia": "Córdoba",
+    "direccion": "Calle Lucano, 14003 Córdoba",
+    "telefono": "957 47 89 23",
+    "email": "juanbadia@peñaflamenco.com",
+    "descripcion": "Peña cordobesa fundada en honor al cantaor Juan Badía. Destaca por su escuela de cante y sus recitales de flamenco tradicional cordobés.",
+    "imagen": "/images/penas/badia.jpg"
+  },
+  {
+    "id": "pena-flamenca-malaga-ardales",
+    "nombre": "Sociedad Flamenca Cultural Ardaleña El Castillo",
+    "provincia": "Málaga",
+    "direccion": "Plaza de San Isidro, 29550 Ardales",
+    "telefono": "952 45 80 91",
+    "email": "elcastillo@ardales.com",
+    "descripcion": "Sociedad cultural dedicada a la promoción del flamenco en la comarca del Guadalteba. Organiza concursos de cante y festivales anuales.",
+    "imagen": "/images/penas/ardales.jpg"
+  },
+  {
+    "id": "pena-flamenca-huelva-aracena",
+    "nombre": "Tertulia Cultural Flamenca De Aracena",
+    "provincia": "Huelva",
+    "direccion": "Calle Pozo de la Nieve, 21200 Aracena",
+    "telefono": "959 12 67 34",
+    "email": "tertuliaracena@gmail.com",
+    "descripcion": "Tertulia flamenca en la sierra de Aracena, conocida por sus veladas intimistas y su apoyo a artistas locales. Celebra el Día del Flamenco con actividades especiales.",
+    "imagen": "/images/penas/aracena.jpg"
+  },
+  {
+    "id": "pena-flamenca-almeria-grazalema",
+    "nombre": "Peña Y Taller Flamenco De Lunares Grazalema",
+    "provincia": "Almería",
+    "direccion": "Calle del Carmen, 04001 Almería",
+    "telefono": "950 23 45 67",
+    "email": "delunares@flamenco.es",
+    "descripcion": "Peña que combina la actividad cultural con la enseñanza del flamenco. Ofrece talleres de baile, cante y guitarra para todas las edades.",
+    "imagen": "/images/penas/grazalema.jpg"
+  },
+  {
+    "id": "pena-flamenca-sevilla-gilena",
+    "nombre": "Tertulia Flamenca De Gilena",
+    "provincia": "Sevilla",
+    "direccion": "Plaza de la Constitución, 41565 Gilena",
+    "telefono": "955 97 23 45",
+    "email": "tertuliagilena@hotmail.com",
+    "descripcion": "Peña flamenca rural que mantiene viva la tradición del flamenco en los pueblos de Sevilla. Organiza encuentros mensuales y participa en festivales comarcales.",
+    "imagen": "/images/penas/gilena.jpg"
+  },
+  {
+    "id": "pena-flamenca-cadiz-rota",
+    "nombre": "Peña Rociera Roteña",
+    "provincia": "Cádiz",
+    "direccion": "Avenida de la Marina, 11520 Rota",
+    "telefono": "956 81 23 45",
+    "email": "rocierarotena@gmail.com",
+    "descripcion": "Peña especializada en el cante rociero y flamenco gaditano. Organiza romerías flamencas y participa activamente en la Semana Santa roteña.",
+    "imagen": "/images/penas/rota.jpg"
+  },
+  {
+    "id": "pena-flamenca-cordoba-benamej",
+    "nombre": "Peña Cultural Flamenca Cayetano Muriel De Benamejí",
+    "provincia": "Córdoba",
+    "direccion": "Calle Nueva, 14910 Benamejí",
+    "telefono": "957 70 34 56",
+    "email": "cayetanomuriel@peña.com",
+    "descripcion": "Peña dedicada al cantaor Cayetano Muriel, figura destacada del flamenco cordobés. Mantiene un archivo histórico del flamenco local y organiza homenajes anuales.",
+    "imagen": "/images/penas/benamej.jpg"
+  }
+]

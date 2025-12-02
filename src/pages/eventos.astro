@@ -1,0 +1,369 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import eventos from '../data/eventos.json';
+
+// Group events by month
+const eventosPorMes = eventos.reduce((acc, evento) => {
+  const fecha = new Date(evento.fecha);
+  const mesAno = `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, '0')}`;
+  if (!acc[mesAno]) {
+    acc[mesAno] = [];
+  }
+  acc[mesAno].push(evento);
+  return acc;
+}, {} as Record<string, typeof eventos>);
+
+const meses = Object.keys(eventosPorMes).sort();
+---
+
+<Layout title="Eventos Flamencos - Andalucía" description="Calendario de eventos flamencos en Andalucía. Festivales, conciertos, talleres y espectáculos de flamenco.">
+  <Navigation />
+  
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Eventos Flamencos</h1>
+      <p class="page-description">
+        Descubre los mejores eventos de flamenco en Andalucía. Desde grandes festivales hasta recitales íntimos en peñas locales.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button class="calendar-nav" id="prev-month" aria-label="Mes anterior">
+            <span>←</span>
+          </button>
+          <h2 class="calendar-title" id="current-month">Febrero 2025</h2>
+          <button class="calendar-nav" id="next-month" aria-label="Mes siguiente">
+            <span>→</span>
+          </button>
+        </div>
+        
+        <div class="filters">
+          <div class="filter-group">
+            <label for="provincia-filter" class="form-label">Provincia:</label>
+            <select id="provincia-filter" class="form-select">
+              <option value="">Todas las provincias</option>
+              <option value="Almería">Almería</option>
+              <option value="Cádiz">Cádiz</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Granada">Granada</option>
+              <option value="Huelva">Huelva</option>
+              <option value="Jaén">Jaén</option>
+              <option value="Málaga">Málaga</option>
+              <option value="Sevilla">Sevilla</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label for="tipo-filter" class="form-label">Tipo:</label>
+            <select id="tipo-filter" class="form-select">
+              <option value="">Todos los tipos</option>
+              <option value="festival">Festival</option>
+              <option value="concierto">Concierto</option>
+              <option value="taller">Taller</option>
+              <option value="espectaculo">Espectáculo</option>
+              <option value="concurso">Concurso</option>
+              <option value="conferencia">Conferencia</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="events-grid" id="events-container">
+          {eventos.map(evento => (
+            <article class="event-card" data-provincia={evento.provincia} data-tipo={evento.tipo} data-fecha={evento.fecha}>
+              <div class="event-date-badge">
+                <div class="event-day">{new Date(evento.fecha).getDate()}</div>
+                <div class="event-month">{new Date(evento.fecha).toLocaleDateString('es-ES', { month: 'short' })}</div>
+              </div>
+              <div class="event-content">
+                <div class="event-header">
+                  <span class="badge badge-primary">{evento.tipo}</span>
+                  <span class="event-time">⏰ {evento.hora}</span>
+                </div>
+                <h3 class="event-title">{evento.titulo}</h3>
+                <p class="event-location">📍 {evento.lugar}</p>
+                <p class="event-province">{evento.provincia}</p>
+                <p class="event-description">{evento.descripcion}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-header {
+    background: rgba(230, 245, 240, 0.95) !important;
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .page-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #000000;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .calendar-container {
+    background: var(--color-bg-medium);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-primary);
+  }
+  
+  .calendar-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .calendar-nav {
+    background: var(--color-bg-light);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all var(--transition-base);
+  }
+
+  .calendar-nav:hover {
+    background: var(--color-primary);
+    color: var(--color-bg-dark);
+    transform: scale(1.1);
+  }
+  
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  .event-card {
+    background: var(--color-bg-dark);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-md);
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .event-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .event-card.hidden {
+    display: none;
+  }
+  
+  .event-date-badge {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    text-align: center;
+    min-width: 70px;
+    height: fit-content;
+  }
+
+  .event-day {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: var(--font-heading);
+    color: #FFFFFF;
+    line-height: 1;
+  }
+
+  .event-month {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 0.25rem;
+  }
+  
+  .event-content {
+    flex: 1;
+  }
+  
+  .event-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+  
+  .event-time {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  
+  .event-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .event-location,
+  .event-province {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .event-province {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .event-card .badge-primary {
+    background: var(--gradient-primary);
+    color: #FFFFFF;
+  }
+  
+  .event-description {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .calendar-header {
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+    
+    .calendar-title {
+      order: -1;
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const allEvents = Array.from(document.querySelectorAll('.event-card'));
+  const provinciaFilter = document.getElementById('provincia-filter') as HTMLSelectElement;
+  const tipoFilter = document.getElementById('tipo-filter') as HTMLSelectElement;
+  const prevButton = document.getElementById('prev-month');
+  const nextButton = document.getElementById('next-month');
+  const monthTitle = document.getElementById('current-month');
+  
+  let currentMonthIndex = 1; // February 2025 (0-indexed)
+  let currentYear = 2025;
+  
+  const monthNames = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  
+  function updateMonthDisplay() {
+    if (monthTitle) {
+      monthTitle.textContent = `${monthNames[currentMonthIndex]} ${currentYear}`;
+    }
+    filterEvents();
+  }
+  
+  function filterEvents() {
+    const selectedProvincia = provinciaFilter?.value || '';
+    const selectedTipo = tipoFilter?.value || '';
+    
+    allEvents.forEach(event => {
+      const eventProvincia = event.getAttribute('data-provincia') || '';
+      const eventTipo = event.getAttribute('data-tipo') || '';
+      const eventFecha = event.getAttribute('data-fecha') || '';
+      const eventDate = new Date(eventFecha);
+      const eventMonth = eventDate.getMonth();
+      const eventYear = eventDate.getFullYear();
+      
+      const matchesProvincia = !selectedProvincia || eventProvincia === selectedProvincia;
+      const matchesTipo = !selectedTipo || eventTipo === selectedTipo;
+      const matchesMonth = eventMonth === currentMonthIndex && eventYear === currentYear;
+      
+      if (matchesProvincia && matchesTipo && matchesMonth) {
+        event.classList.remove('hidden');
+      } else {
+        event.classList.add('hidden');
+      }
+    });
+  }
+  
+  prevButton?.addEventListener('click', () => {
+    currentMonthIndex--;
+    if (currentMonthIndex < 0) {
+      currentMonthIndex = 11;
+      currentYear--;
+    }
+    updateMonthDisplay();
+  });
+  
+  nextButton?.addEventListener('click', () => {
+    currentMonthIndex++;
+    if (currentMonthIndex > 11) {
+      currentMonthIndex = 0;
+      currentYear++;
+    }
+    updateMonthDisplay();
+  });
+  
+  provinciaFilter?.addEventListener('change', filterEvents);
+  tipoFilter?.addEventListener('change', filterEvents);
+  
+  // Initialize
+  updateMonthDisplay();
+</script>

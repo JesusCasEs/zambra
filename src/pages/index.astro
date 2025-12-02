@@ -1,11 +1,456 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import eventos from '../data/eventos.json';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const featuredEvents = eventos.slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Zambra - Agenda Cultural" description="Descubre la agenda cultural de flamenco en Andalucía. Peñas, eventos, escuelas y asociaciones dedicadas al arte jondo.">
+  <Navigation />
+  
+  <!-- Hero Section with Parallax -->
+  <section class="hero">
+    <div class="parallax-layer parallax-bg"></div>
+    <div class="parallax-layer parallax-content">
+      <div class="container hero-content">
+        <h1 class="hero-title fade-in">Zambra</h1>
+        <p class="hero-subtitle slide-in-left">La agenda cultural del arte jondo</p>
+        <p class="hero-description slide-in-right">
+          Descubre el corazón del flamenco en Andalucía. Explora peñas flamencas, eventos únicos, 
+          escuelas de cante, baile y guitarra en toda la región.
+        </p>
+        <div class="hero-buttons">
+          <a href="/eventos" class="btn btn-primary">Ver Eventos</a>
+          <a href="/penas" class="btn btn-outline">Explorar Peñas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Section 1 -->
+  <section class="parallax-section parallax-section-1">
+    <!-- <div class="parallax-image parallax-image-1"></div> -->
+    <div class="parallax-overlay">
+      <div class="container">
+        <div class="parallax-content-box">
+          <h2>El Arte del Flamenco</h2>
+          <p>
+            El flamenco es un arte único que nace del alma de Andalucía. Una expresión cultural
+            que combina cante, baile y toque en una manifestación artística reconocida como
+            Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section">
+    <div class="container">
+      <h2 class="section-title">Andalucía, Cuna del Flamenco</h2>
+      <div class="about-grid">
+        <div class="about-card fade-in">
+          <div class="about-icon">🎸</div>
+          <h3>Peñas Flamencas</h3>
+          <p>
+            Descubre las peñas flamencas de toda Andalucía, espacios dedicados a la preservación
+            y difusión del arte jondo. Lugares donde el flamenco se vive con autenticidad.
+          </p>
+          <a href="/penas" class="btn btn-secondary">Explorar Peñas</a>
+        </div>
+
+        <div class="about-card fade-in">
+          <div class="about-icon">📅</div>
+          <h3>Eventos y Festivales</h3>
+          <p>
+            Consulta la agenda de eventos flamencos en Andalucía. Desde festivales internacionales
+            hasta recitales íntimos en peñas locales.
+          </p>
+          <a href="/eventos" class="btn btn-secondary">Ver Calendario</a>
+        </div>
+
+        <div class="about-card fade-in">
+          <div class="about-icon">🎓</div>
+          <h3>Escuelas y Formación</h3>
+          <p>
+            Encuentra escuelas y asociaciones donde aprender cante, baile, guitarra y percusión flamenca.
+            Formación para todos los niveles.
+          </p>
+          <a href="/escuelas" class="btn btn-secondary">Ver Escuelas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Section 2 -->
+  <section class="parallax-section parallax-section-1">
+    <!-- <div class="parallax-image parallax-image-2"></div> -->
+    <div class="parallax-overlay">
+      <div class="container">
+        <div class="parallax-content-box">
+          <h2>Tradición y Pasión</h2>
+          <p>
+            Cada provincia andaluza aporta su propio estilo al flamenco: desde las alegrías gaditanas 
+            hasta las zambras granadinas, pasando por las soleares sevillanas y los fandangos malagueños.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events -->
+  <section class="section featured-section">
+    <div class="container">
+      <h2 class="section-title">Próximos Eventos Destacados</h2>
+      <div class="grid grid-3">
+        {featuredEvents.map(evento => (
+          <article class="card">
+            <div class="card-image-placeholder">
+              <span class="event-date">{new Date(evento.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}</span>
+            </div>
+            <div class="card-content">
+              <span class="badge badge-primary">{evento.tipo}</span>
+              <h3 class="card-title">{evento.titulo}</h3>
+              <p class="card-subtitle">{evento.provincia}</p>
+              <p class="card-description">{evento.descripcion.substring(0, 100)}...</p>
+              <a href="/eventos" class="btn btn-outline mt-md">Ver Detalles</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="text-center mt-xl">
+        <a href="/eventos" class="btn btn-primary">Ver Todos los Eventos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Section 3 -->
+  <section class="parallax-section parallax-section-1">
+    <!-- <div class="parallax-image parallax-image-3"></div> -->
+    <div class="parallax-overlay">
+      <div class="container">
+        <div class="parallax-content-box">
+          <h2>Vive el Flamenco</h2>
+          <p>
+            Sumérgete en la cultura flamenca de Andalucía. Asiste a espectáculos, aprende en las mejores 
+            escuelas y conecta con la comunidad flamenca más auténtica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </Layout>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .parallax-bg {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #FFFFFF 50%, var(--color-primary) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .parallax-content {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-content {
+    text-align: center;
+    max-width: 900px;
+    padding: var(--spacing-xl);
+  }
+  
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: var(--spacing-md);
+    color: #000000;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-family: var(--font-heading);
+  }
+  
+  .hero-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .parallax-section {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .parallax-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .parallax-image-1 {
+    background-image: linear-gradient(rgba(196, 30, 58, 0.3), rgba(10, 10, 10, 0.7)), 
+                      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23C41E3A" width="1200" height="800"/><path fill="%238B0000" d="M0 400 Q300 200 600 400 T1200 400 V800 H0 Z"/></svg>');
+  }
+  
+  .parallax-image-2 {
+    background-image: linear-gradient(rgba(212, 175, 55, 0.3), rgba(10, 10, 10, 0.7)), 
+                      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23D4AF37" width="1200" height="800"/><circle fill="%23B8941E" cx="600" cy="400" r="300"/></svg>');
+  }
+  
+  .parallax-image-3 {
+    background-image: linear-gradient(rgba(139, 0, 0, 0.3), rgba(10, 10, 10, 0.7)), 
+                      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%238B0000" width="1200" height="800"/><path fill="%23C41E3A" d="M0 0 L1200 0 L1200 400 Q900 600 600 400 T0 400 Z"/></svg>');
+  }
+  
+  .parallax-overlay {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+  
+  .parallax-content-box {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .parallax-content-box h2 {
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .parallax-content-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .parallax-section-1 .parallax-content-box {
+    background: rgba(230, 245, 240, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--color-primary) !important;
+  }
+
+  .parallax-section-1 .parallax-content-box h2 {
+    color: var(--color-primary) !important;
+  }
+
+  .parallax-section-1 .parallax-content-box p {
+    color: #000000 !important;
+  }
+  
+  .about-section {
+    background: var(--color-bg-medium);
+  }
+
+  .about-section .section-title {
+    color: var(--color-primary);
+  }
+
+  .about-section .section-title::after {
+    background: var(--gradient-primary);
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+  }
+  
+  .about-card {
+    background: var(--color-bg-dark);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all var(--transition-base);
+  }
+  
+  .about-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .about-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .about-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .about-card p {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .featured-section {
+    background: var(--color-bg-medium);
+  }
+
+  .featured-section .section-title {
+    color: var(--color-primary);
+  }
+
+  .featured-section .section-title::after {
+    background: var(--gradient-primary);
+  }
+
+  .featured-section .card {
+    background: #FFFFFF;
+    border: 2px solid transparent;
+  }
+
+  .featured-section .card:hover {
+    border-color: var(--color-primary);
+  }
+  
+  .card-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .event-date {
+    background-color: #fff;
+    color: var(--color-primary) !important;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .featured-section .card-content h3.card-title {
+    color: var(--color-primary);
+  }
+
+  .featured-section .card-content .badge-primary {
+    background: var(--gradient-primary);
+    color: #FFFFFF;
+    float: right;
+  }
+
+  .featured-section .card-content .card-subtitle {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 80vh;
+      min-height: 500px;
+    }
+    
+    .parallax-section {
+      height: 50vh;
+      min-height: 300px;
+    }
+    
+    .parallax-image {
+      background-attachment: scroll;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Parallax scroll effect
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxImages = document.querySelectorAll('.parallax-image');
+    
+    parallaxImages.forEach((image) => {
+      const speed = 0.5;
+      const yPos = -(scrolled * speed);
+      (image as HTMLElement).style.transform = `translateY(${yPos}px)`;
+    });
+  });
+  
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.about-card, .card').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
