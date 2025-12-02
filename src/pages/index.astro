@@ -402,21 +402,35 @@ const featuredEvents = eventos.slice(0, 3);
       height: 80vh;
       min-height: 500px;
     }
-    
+
     .parallax-section {
-      height: 50vh;
-      min-height: 300px;
+      height: auto;
+      min-height: auto;
+      padding: var(--spacing-xl) 0;
     }
-    
+
+    .parallax-content-box {
+      padding: var(--spacing-lg) !important;
+      margin: 0 var(--spacing-sm);
+    }
+
+    .parallax-section-1 .parallax-content-box h2 {
+      font-size: clamp(1.5rem, 5vw, 2rem) !important;
+    }
+
+    .parallax-section-1 .parallax-content-box p {
+      font-size: 0.95rem !important;
+    }
+
     .parallax-image {
       background-attachment: scroll;
     }
-    
+
     .hero-buttons {
       flex-direction: column;
       align-items: stretch;
     }
-    
+
     .about-grid {
       grid-template-columns: 1fr;
     }

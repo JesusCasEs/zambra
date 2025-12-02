@@ -282,12 +282,31 @@ const meses = Object.keys(eventosPorMes).sort();
     .events-grid {
       grid-template-columns: 1fr;
     }
-    
+
+    .calendar-container {
+      padding: var(--spacing-sm);
+    }
+
+    .event-card {
+      flex-direction: column;
+      padding: var(--spacing-sm);
+    }
+
+    .event-date-badge {
+      width: 100%;
+      min-width: auto;
+      padding: var(--spacing-md);
+    }
+
+    .event-day {
+      font-size: 2.5rem;
+    }
+
     .calendar-header {
       flex-wrap: wrap;
       gap: var(--spacing-md);
     }
-    
+
     .calendar-title {
       order: -1;
       width: 100%;

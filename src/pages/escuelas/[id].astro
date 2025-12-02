@@ -30,7 +30,7 @@ const iconMap: Record<string, string> = {
       <div class="header-content">
         <div class="header-icon">{iconMap[escuela.tipo] || '🎓'}</div>
         <div>
-          <span class="badge badge-secondary">{escuela.tipo}</span>
+          <span class="badge badge-primary">{escuela.tipo}</span>
           <h1 class="detail-title">{escuela.nombre}</h1>
           <p class="detail-subtitle">{escuela.provincia}</p>
         </div>
@@ -51,40 +51,40 @@ const iconMap: Record<string, string> = {
             <h2 class="section-heading">Información de Contacto</h2>
             <div class="contact-info">
               <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                <div>
+                <div class="contact-item-header">
+                  <span class="contact-icon">📍</span>
                   <strong>Dirección</strong>
-                  <p>{escuela.direccion}</p>
                 </div>
+                <p>{escuela.direccion}</p>
               </div>
-              
+
               {escuela.telefono && (
                 <div class="contact-item">
-                  <span class="contact-icon">📞</span>
-                  <div>
+                  <div class="contact-item-header">
+                    <span class="contact-icon">📞</span>
                     <strong>Teléfono</strong>
-                    <p><a href={`tel:${escuela.telefono}`}>{escuela.telefono}</a></p>
                   </div>
+                  <p><a href={`tel:${escuela.telefono}`}>{escuela.telefono}</a></p>
                 </div>
               )}
-              
+
               {escuela.email && (
                 <div class="contact-item">
-                  <span class="contact-icon">✉️</span>
-                  <div>
+                  <div class="contact-item-header">
+                    <span class="contact-icon">✉️</span>
                     <strong>Email</strong>
-                    <p><a href={`mailto:${escuela.email}`}>{escuela.email}</a></p>
                   </div>
+                  <p><a href={`mailto:${escuela.email}`}>{escuela.email}</a></p>
                 </div>
               )}
-              
+
               {escuela.web && (
                 <div class="contact-item">
-                  <span class="contact-icon">🌐</span>
-                  <div>
+                  <div class="contact-item-header">
+                    <span class="contact-icon">🌐</span>
                     <strong>Sitio Web</strong>
-                    <p><a href={escuela.web} target="_blank" rel="noopener noreferrer">{escuela.web}</a></p>
                   </div>
+                  <p><a href={escuela.web} target="_blank" rel="noopener noreferrer">{escuela.web}</a></p>
                 </div>
               )}
             </div>
@@ -126,23 +126,24 @@ const iconMap: Record<string, string> = {
 
 <style>
   .detail-header {
-    background: var(--gradient-secondary);
+    background: rgba(230, 245, 240, 0.95) !important;
+    backdrop-filter: blur(10px);
     padding: var(--spacing-xl) 0 var(--spacing-3xl);
     margin-bottom: var(--spacing-xl);
   }
-  
+
   .back-link {
     display: inline-flex;
     align-items: center;
-    color: var(--color-bg-medium);
+    color: var(--color-primary);
     text-decoration: none;
     margin-bottom: var(--spacing-lg);
     font-weight: 600;
     transition: color var(--transition-fast);
   }
-  
+
   .back-link:hover {
-    color: var(--color-bg-dark);
+    color: var(--color-primary-dark);
   }
   
   .header-content {
@@ -165,14 +166,13 @@ const iconMap: Record<string, string> = {
   .detail-title {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: var(--spacing-xs);
-    color: var(--color-bg-dark);
+    color: var(--color-primary);
   }
-  
+
   .detail-subtitle {
     font-size: 1.25rem;
-    color: var(--color-bg-dark);
+    color: var(--color-primary);
     font-weight: 600;
-    opacity: 0.8;
   }
   
   .detail-grid {
@@ -195,7 +195,7 @@ const iconMap: Record<string, string> = {
   }
   
   .section-heading {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin-bottom: var(--spacing-md);
     font-size: 1.75rem;
   }
@@ -214,35 +214,42 @@ const iconMap: Record<string, string> = {
   
   .contact-item {
     display: flex;
-    gap: var(--spacing-md);
-    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
-  
+
+  .contact-item-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
   .contact-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
   }
-  
+
   .contact-item strong {
-    display: block;
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-xs);
+    color: #000000;
+    font-size: 1rem;
   }
-  
+
   .contact-item p {
-    color: var(--color-text-secondary);
+    color: #000000;
     margin: 0;
-    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  
+
   .contact-item a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
-  
+
   .contact-item a:hover {
-    color: var(--color-secondary-dark);
+    color: var(--color-primary-dark);
     text-decoration: underline;
   }
   
@@ -260,7 +267,7 @@ const iconMap: Record<string, string> = {
   }
   
   .sidebar-card h3 {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
     font-size: 1.25rem;
   }
@@ -280,20 +287,51 @@ const iconMap: Record<string, string> = {
   .cta-card {
     background: var(--gradient-primary);
   }
-  
+
   .cta-card h3,
   .cta-card .sidebar-text {
-    color: var(--color-text-primary);
+    color: #000000;
   }
   
   @media (max-width: 968px) {
+    .detail-header {
+      padding: var(--spacing-lg) 0 var(--spacing-xl);
+    }
+
+    .header-icon {
+      font-size: 3.5rem;
+      padding: var(--spacing-md);
+    }
+
+    .detail-title {
+      font-size: 1.75rem;
+    }
+
+    .detail-subtitle {
+      font-size: 1rem;
+    }
+
     .detail-grid {
       grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
     }
-    
+
     .header-content {
       flex-direction: column;
       text-align: center;
+    }
+
+    .detail-card,
+    .sidebar-card {
+      padding: var(--spacing-lg);
+    }
+
+    .section-heading {
+      font-size: 1.5rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
     }
   }
 </style>

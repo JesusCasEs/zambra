@@ -275,7 +275,7 @@ a:hover {
 
 .badge-primary {
   background: var(--color-primary);
-  color: var(--color-text-primary);
+  color: #fff;
 }
 
 .badge-secondary {
@@ -429,5 +429,9 @@ a:hover {
 
   .section {
     padding: var(--spacing-xl) 0;
+  }
+
+  .hero[data-astro-cid-j7pv25f6] {
+    height: 100% !important;
   }
 }

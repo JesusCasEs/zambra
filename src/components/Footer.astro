@@ -69,12 +69,21 @@ const currentYear = new Date().getFullYear();
     margin-bottom: var(--spacing-sm);
   }
 
-  .footer-description,
+  .footer-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xs);
+    color: #000000;
+  }
+
   .footer-text {
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: var(--spacing-xs);
     color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
   .footer-links {

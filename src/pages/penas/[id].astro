@@ -43,30 +43,30 @@ const { pena } = Astro.props;
             <h2 class="section-heading">Información de Contacto</h2>
             <div class="contact-info">
               <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                <div>
+                <div class="contact-item-header">
+                  <span class="contact-icon">📍</span>
                   <strong>Dirección</strong>
-                  <p>{pena.direccion}</p>
                 </div>
+                <p>{pena.direccion}</p>
               </div>
-              
+
               {pena.telefono && (
                 <div class="contact-item">
-                  <span class="contact-icon">📞</span>
-                  <div>
+                  <div class="contact-item-header">
+                    <span class="contact-icon">📞</span>
                     <strong>Teléfono</strong>
-                    <p><a href={`tel:${pena.telefono}`}>{pena.telefono}</a></p>
                   </div>
+                  <p><a href={`tel:${pena.telefono}`}>{pena.telefono}</a></p>
                 </div>
               )}
-              
+
               {pena.email && (
                 <div class="contact-item">
-                  <span class="contact-icon">✉️</span>
-                  <div>
+                  <div class="contact-item-header">
+                    <span class="contact-icon">✉️</span>
                     <strong>Email</strong>
-                    <p><a href={`mailto:${pena.email}`}>{pena.email}</a></p>
                   </div>
+                  <p><a href={`mailto:${pena.email}`}>{pena.email}</a></p>
                 </div>
               )}
             </div>
@@ -103,23 +103,24 @@ const { pena } = Astro.props;
 
 <style>
   .detail-header {
-    background: var(--gradient-primary);
+    background: rgba(230, 245, 240, 0.95) !important;
+    backdrop-filter: blur(10px);
     padding: var(--spacing-xl) 0 var(--spacing-3xl);
     margin-bottom: var(--spacing-xl);
   }
-  
+
   .back-link {
     display: inline-flex;
     align-items: center;
-    color: var(--color-text-secondary);
+    color: var(--color-primary);
     text-decoration: none;
     margin-bottom: var(--spacing-lg);
     font-weight: 600;
     transition: color var(--transition-fast);
   }
-  
+
   .back-link:hover {
-    color: var(--color-secondary);
+    color: var(--color-primary-dark);
   }
   
   .header-content {
@@ -138,12 +139,12 @@ const { pena } = Astro.props;
   .detail-title {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: var(--spacing-xs);
-    color: var(--color-text-primary);
+    color: var(--color-primary);
   }
-  
+
   .detail-subtitle {
     font-size: 1.25rem;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     font-weight: 600;
   }
   
@@ -167,7 +168,7 @@ const { pena } = Astro.props;
   }
   
   .section-heading {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin-bottom: var(--spacing-md);
     font-size: 1.75rem;
   }
@@ -186,34 +187,47 @@ const { pena } = Astro.props;
   
   .contact-item {
     display: flex;
-    gap: var(--spacing-md);
-    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
-  
+
+  .contact-item-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
   .contact-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
   }
-  
+
   .contact-item strong {
-    display: block;
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-xs);
+    color: #000000;
+    font-size: 1rem;
   }
-  
+
   .contact-item p {
-    color: var(--color-text-secondary);
+    color: #000000;
     margin: 0;
+    overflow: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  
+
   .contact-item a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  
+
   .contact-item a:hover {
-    color: var(--color-secondary-dark);
+    color: var(--color-primary-dark);
     text-decoration: underline;
   }
   
@@ -231,7 +245,7 @@ const { pena } = Astro.props;
   }
   
   .sidebar-card h3 {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
     font-size: 1.25rem;
   }
@@ -249,23 +263,63 @@ const { pena } = Astro.props;
   }
   
   .cta-card {
-    background: var(--gradient-secondary);
-    color: var(--color-bg-dark);
+    background: var(--gradient-primary);
+    color: #000000;
   }
-  
+
   .cta-card h3,
   .cta-card .sidebar-text {
-    color: var(--color-bg-dark);
+    color: #000000;
   }
   
   @media (max-width: 968px) {
+    .detail-header {
+      padding: var(--spacing-lg) 0 var(--spacing-xl);
+    }
+
+    .header-icon {
+      font-size: 3.5rem;
+      padding: var(--spacing-md);
+    }
+
+    .detail-title {
+      font-size: 1.75rem;
+    }
+
+    .detail-subtitle {
+      font-size: 1rem;
+    }
+
     .detail-grid {
       grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
     }
-    
+
     .header-content {
       flex-direction: column;
       text-align: center;
+    }
+
+    .detail-card,
+    .sidebar-card {
+      padding: var(--spacing-lg);
+    }
+
+    .section-heading {
+      font-size: 1.5rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+    }
+
+    .cta-card h3 {
+      font-size: 1.1rem;
+    }
+
+    .cta-card .sidebar-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
   }
 </style>
